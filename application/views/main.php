@@ -1,0 +1,1 @@
+<div style="background-color: #555;"><?=$contents?></div>
