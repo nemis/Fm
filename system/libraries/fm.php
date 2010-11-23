@@ -110,4 +110,9 @@ final class Fm
 		}
 		return $v;
 	}
+	
+	public function frameworkName()
+	{
+		return 'FM framework 0.1';
+	}
 }

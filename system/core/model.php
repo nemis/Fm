@@ -63,7 +63,10 @@ class Model
 	public function countAll()
 	{
 		$row = R::getRow('select count(*) as count_all from `'.$this->table_name.'`');
-		return (int)$row['count_all'];
+		if (isset($row['count_all']))
+			return (int)$row['count_all'];
+		else
+			return 0;
 	}
 	
 	public function findAll()

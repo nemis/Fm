@@ -1,10 +1,11 @@
 @CHARSET "UTF-8";
 
 body {
-	background-color: #555;
+	background-color: #1F242A;
 	color: #222;
 	font-family: Verdana;
 	font-size: 12px;
+	text-align: center;
 }
 
 form, fieldset {
@@ -33,10 +34,39 @@ input.submit, input[type=submit] {
 
 input.wide { width: 400px; }
 
+#screen {
+	width: 960px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: left;
+	color: #fff;
+}
+
+#screen a { color: #fff; font-weight: bold }
+
 #container {
-	border: 1px solid #555;
+	background-color: #3B6B9C;
+	float: left;
+	width: 760px;
+	min-height: 400px;
+}
+
+.container-content {
 	padding: 10px;
-	background-color: #aaa;
+}
+
+#top {
+	background-color: #60BB22;
+	color: #F2BABB;
+	font-size: 16px;
+	padding: 20px;
+}
+
+#menu {
+	background-color: #194E84;
+	float: left;
+	width: 200px;
+	min-height: 400px;
 }
 
 .crud-table th {

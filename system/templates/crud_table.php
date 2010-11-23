@@ -40,10 +40,14 @@ foreach ($iterations as $row)
 
 ?>
 </table>
+<?php if ($countAll > 0) { ?>
 <a href="javascript:document.getElementById('crud-form').submit()"><?=Dict::word('delete marked')?></a>
 |
+<?php } ?>
 <?php echo Dict::word('total'), ': ', $countAll, ' '?>
-|
-<?=$pagination?>
+
+<?php if ($countAll > 0) { ?>
+| <?=$pagination?>
+<?php } ?>
 </div>
 </form>

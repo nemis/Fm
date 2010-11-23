@@ -1,11 +1,6 @@
 <?php
 
-$config['db'] = array(
-	'host' => 'localhost',
-	'db' => 'fmtest',
-	'user' => 'root',
-	'pass' => 'root',
-);
+include('../application/config.php');
 
 $config['models'] = array(
 	'users' => array(
