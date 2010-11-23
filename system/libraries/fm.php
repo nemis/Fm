@@ -8,6 +8,10 @@ final class Fm
 		'vendor',
 	);
 	
+	static private $path = '';
+	
+	static private $applicationName;
+	
 	/**
 	 * Displaying errors
 	 * 
@@ -23,9 +27,11 @@ final class Fm
 	 * load __autoloaders functions
 	 * 
 	 */
-	public static function initialize()
+	public static function initialize($path='')
 	{
 		require_once('system/constants.php');
+		
+		self::$path = $path;
 		
 		spl_autoload_register(null, false);
 		spl_autoload_register(array('Fm', 'autoLoader'));
@@ -45,7 +51,7 @@ final class Fm
 		{
 			foreach (self::$system_dirs as $dir)
 			{
-				if (file_exists($f = 'system/'.$dir.'/'.$lower_name.'.php'))
+				if (file_exists($f = Fm::relativePath().'system/'.$dir.'/'.$lower_name.'.php'))
 				{
 					require_once($f);
 					break;
@@ -76,7 +82,32 @@ final class Fm
 			);
 		}
 		
+		self::$applicationName = $name;
+		
 		spl_autoload_register(array($application, 'autoLoader'));
 		$application->start();
+	}
+	
+	public static function relativePath()
+	{
+		return self::$path.'/';
+	}
+	
+	public static function applicationPath()
+	{
+		return self::$applicationName;
+	}
+	
+	static public function config($name)
+	{
+		include(self::applicationPath().'/config.php');
+		$name = explode('.', $name);
+		$v = $config[array_shift($name)];
+		foreach ($name as $n)
+		{
+			if (!isset($v[$n])) return false;
+			$v = $v[$n];
+		}
+		return $v;
 	}
 }

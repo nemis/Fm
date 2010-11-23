@@ -10,6 +10,8 @@
 <meta name="doc-type" content="Web Page"/>
 <meta name="doc-class" content="Published"/>
 <meta name="doc-rights" content="Copywritten Work"/>
+<?php foreach ($this->application->styles() as $style) { ?>
+<link rel="stylesheet" href="<?=Router::baseUrl()?>/public/css/<?=$style?>.css"/>
+<?php } ?>
 </head>
 <body>
-<?=$body?>

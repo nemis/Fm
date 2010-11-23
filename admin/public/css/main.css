@@ -1,0 +1,114 @@
+@CHARSET "UTF-8";
+
+body {
+	background-color: #555;
+	color: #222;
+	font-family: Verdana;
+	font-size: 12px;
+}
+
+form, fieldset {
+	border: 0px;
+	padding: 0px;
+}
+
+input:focus {
+	background-color: #ff5;
+}
+
+input, select {
+	border: 1px solid #444;
+	padding: 4px;
+	font-size: 10px;
+}
+
+input.submit, input[type=submit] {
+	background-image: url(../images/th.png);
+	background-repeat: repeat-x;
+	background-color: #000;
+	color: #fff;
+	padding: 10px;
+	margin-top: 10px;
+}
+
+input.wide { width: 400px; }
+
+#container {
+	border: 1px solid #555;
+	padding: 10px;
+	background-color: #aaa;
+}
+
+.crud-table th {
+	background-image: url(../images/th.png);
+	background-repeat: repeat-x;
+	background-color: #000;
+	color: #fff;
+	padding: 10px;
+	text-transform: capitalize;
+}
+
+.crud-table th a {
+	color: #fff;
+}
+
+.crud-table {
+	border-collapse: 0px;
+	border-spacing: 0px;
+	font-size: 9px;
+	width: 100%;
+}
+
+.crud-table td {
+	border: 1px solid #555;
+	border-color: #ddd #777 #777 #ddd;
+	background-color: #fff;
+	padding: 4px;
+	cursor: pointer;
+}
+
+.crud-table tr:hover td {
+	background-color: #ff5;
+}
+
+.crud-form fieldset {
+	text-align: right;
+}
+
+.crud-form input, .crud-form select {
+	width: 300px;
+}
+
+.crud-form td {
+	padding: 4px;
+	background-color: #fff;
+	border-style: none none dotted none;
+	border-bottom: 1px dotted #444;
+	text-transform: capitalize;
+}
+
+.crud-form table {
+	width: 100%;
+	border-collapse: 0px;
+	border-spacing: 0px;
+	text-align: left;
+}
+
+.crud-search-tr input {
+	width: 94%;
+	background-color: #ffa;
+	border: 0px;
+}
+
+.crud-search-tr:hover td {
+	background-color: #ffa !important;
+}
+
+.crud-search-tr td {
+	padding: 0px;
+	background-color: #ffa;
+}
+
+.right {
+	text-align: right;
+}

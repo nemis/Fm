@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteRule .*\.(gif|jpg|png|css|js|ico|jpeg|swf) - [L]
+RewriteRule ^(.*)$ index.php

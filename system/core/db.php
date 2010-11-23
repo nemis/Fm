@@ -2,6 +2,8 @@
 
 class Db
 {
+	public $queryWriter;
+	
 	public function __construct()
 	{
 		require_once("system/vendor/rb.php");
@@ -10,7 +12,7 @@ class Db
 	public function connect($user, $host, $pass, $db, $type='mysql')
 	{
 		R::setup("$type:host=$host;dbname=$db",$user,$pass);
-		R::freeze();
+		//R::freeze();
 	}
 	
 	public function __call($name, $vars)
@@ -28,10 +30,15 @@ class Db
 		return $iterations;		
 	}
 	
-	private function loadModel($name, $id)
+	private function loadModel($name, $id=0)
 	{
-		$model = new Model($name);
+		$model = new Model($name, $id);
 		$model->load($id);
 		return $model;
+	}
+	
+	public function model($name, $id=0)
+	{
+		return $this->loadModel($name, $id);
 	}
 }

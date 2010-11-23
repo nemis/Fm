@@ -8,6 +8,9 @@ class Application
 	public $db;
 	public $currentController = false;
 	
+	private $styles = array();
+	private $stylesFiles = array();
+	
 	public function __construct($name='application')
 	{
 		// load config file
@@ -31,6 +34,7 @@ class Application
 			
 		$controller_classname = ucfirst(Router::$controller).'_Controller';
 		$controller = new $controller_classname;
+		$controller->__initialize_controller();
 		$controller->db =& $this->db;
 		$controller->application =& $this;
 		$controller->__loadView();
@@ -41,6 +45,13 @@ class Application
 			Fm::error(ACTION_NOT_FOUND);
 		} else {
 			call_user_func_array(array($controller, Router::$action), Router::$params);
+		}
+		
+		// check CSS files
+		$dir = opendir(Fm::relativePath().'/'.$this->name.'/public/css');
+		if ($dir) while ($file = readdir($dir)) if ($file != '.' and $file != '..')
+		{
+			$this->stylesFiles[] = substr($file, 0, strpos($file, '.'));
 		}
 	}
 	
@@ -60,9 +71,19 @@ class Application
 	
 	public function __destruct()
 	{
-		if ($this->currentController->template)
+		echo $this->currentController;
+	}
+	
+	public function styles()
+	{
+		return $this->styles; 
+	}
+	
+	public function loadStyles($name)
+	{
+		if (in_array($name, ($this->stylesFiles)))
 		{
-			$this->currentController->template;
+			$this->styles[$name] = $name;
 		}
 	}
 }
